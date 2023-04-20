@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+
+        body{
+            margin: 0;
+            font-family: 'minecraft';
+            background-image: url(mineee.jpg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        h1{
+            background-color: whitesmoke;
+            text-align: center;
+            margin-left: 32%;
+            margin-right: 32%;
+        }
+
+        header{
+            margin-top: 30px;
+        }
+
+        @font-face {
+            font-family: 'minecraft';
+            src: url(Minecraft.ttf);
+        }
+        main{
+            color: black;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 250px;
+            padding: 30px;
+            background-color: rgb(93, 199, 202);
+            border-radius: 2px;
+            box-shadow: 13px 16px 1px 1px black;
+        }
+
+        form input{
+            padding: 10px;
+            font-weight: bold;
+            outline: none;
+            text-align: right;
+            width: 90;
+        }
+
+        div.options{
+            display: flex;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        div.options span{
+            padding: 20px;
+            width: 20px;
+            background-color: rgb(199, 140, 51);
+            border: 1px solid rgb(44, 40, 48);
+            cursor: pointer;
+            text-align: center;
+            user-select: none;
+        }
+
+        div.options span:hover{
+            background-color: rgb(110, 58, 10);
+        }
+
+        div.options span.limpa{
+            background-color: brown;
+            color: rgb(237, 233, 243);
+            font-weight: bold;
+            border-radius: 5px;
+            width: 205px;
+        }
+
+        #igual:hover{
+            background-color: greenyellow;
+        }
+
+        div.options span.limpa:hover{
+            background-color: rgb(196, 123, 123);
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        .limpa{
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+    <header><h1>Calculadora do Steve<br></h1></header>
+    <main>
+        <form name="calculadora">
+            <input type="text" name="expressao" readonly />
+            <div class="options">
+                <span>/</span>
+                <span>7</span>
+                <span>8</span>
+                <span>9</span>
+                <span>*</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>-</span>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>+</span>
+                <span>0</span>
+                <span>,</span>
+                <span id="igual">=</span>
+                <span class="limpa">LIMPA</span>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        document.querySelectorAll('form span').forEach
+        (item=> { 
+            item.addEventListener('click',(e) => {
+                addVal(item.innerHTML);
+            })
+        });
+        function addVal(valor){
+            if(valor =='LIMPA')
+            document.calculadora.expressao.value = '';
+            else if (valor =='=')
+            document.calculadora.expressao.value = eval
+            (document.calculadora.expressao.value.replaceAll(',','.')).toString().replaceAll('.',',');
+            else
+            document.calculadora.expressao.value+=valor;
+        }
+    </script>
+</body>
+</html>
